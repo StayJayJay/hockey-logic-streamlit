@@ -1,4 +1,8 @@
+import os
 import streamlit as st
+
+st.write("Working dir:", os.getcwd())
+st.write("Files:", os.listdir("."))
 
 st.set_page_config(
     page_title="Hockey Log.Dat",
