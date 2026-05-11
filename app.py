@@ -5,29 +5,39 @@ st.set_page_config(
     layout="centered"
 )
 
+# ======================
+# SIDEBAR NAVIGACE
+# ======================
+st.sidebar.title("🏒 Hockey Logic")
+st.sidebar.markdown("### Navigace")
+
+st.sidebar.markdown(
+    """
+- 📊 **Predikce zápasu**  
+- 📂 **Historie & Excel**
+"""
+)
+
+st.sidebar.info(
+    "Stránky přepínáš kliknutím na jejich název výše ⬆️"
+)
+
+# ======================
+# HLAVNÍ STRÁNKA
+# ======================
 st.title("🏒 Hockey Logic")
 
 st.markdown("""
 Tato aplikace slouží k:
-- 📊 predikci hokejových zápasů
-- 📂 správě historie zápasů
-- 📥 exportu a editaci dat v Excelu
+
+✅ predikci hokejových zápasů  
+✅ ukládání historie  
+✅ zadávání výsledků po zápase  
+✅ exportu do Excelu  
+
+---
+
+👈 **Přejdi na jednotlivé stránky pomocí menu vlevo**
 """)
 
-st.divider()
-
-st.subheader("Navigace")
-
-st.page_link(
-    "pages/1_📊_Predikce_zapasu.py",
-    label="➡️ Predikce zápasu",
-    icon="📊"
-)
-
-st.page_link(
-    "pages/2_📂_Historie_a_Excel.py",
-    label="➡️ Historie & Excel",
-    icon="📂"
-)
-
-st.info("Stránky můžeš přepínat také v menu vlevo ⬅️")
+st.success("Aplikace je správně nastavena ✅")
