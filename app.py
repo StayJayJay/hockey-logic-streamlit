@@ -2,6 +2,12 @@ import streamlit as st
 from model import predict
 from coefficients import REGULAR_SEASON
 
+import pandas as pd
+from datetime import datetime
+
+if "matches" not in st.session_state:
+    st.session_state.matches = []
+
 st.set_page_config(page_title="Hockey Logic", layout="centered")
 
 st.title("🏒 Hockey Logic – Match Predictor")
@@ -54,4 +60,52 @@ if submit:
     st.subheader("📊 Výsledek")
     st.metric("Pravděpodobnost výhry", f"{p_win*100:.1f} %")
     st.write(f"**Log-Odds:** {log_odds:.3f}")
-    
+
+    if st.button("💾 Uložit zápas do historie"):
+    st.session_state.matches.append({
+        "Date": datetime.now().strftime("%Y-%m-%d"),
+        "Mode": mode,
+        "Home": home_team,
+        "Shots Home": shots_home,
+        "Shots Away": shots_away,
+        "PP Home": pp_home,
+        "PP Away": pp_away,
+        "PP Goals Home": pp_goals_home,
+        "PP Goals Away": pp_goals_away,
+        "Goalie Diff": goalie_diff,
+        "xG Diff": xg_diff,
+        "PP Diff": pp_diff,
+        "P(win)": round(p_win, 3),
+        "Result": ""   # vyplníš později
+    })
+    st.success("Zápas uložen ✅")
+
+st.divider()
+st.subheader("📂 Historie zápasů")
+
+if st.session_state.matches:
+    df_history = pd.DataFrame(st.session_state.matches)
+    st.data_editor(
+        df_history,
+        num_rows="dynamic",
+        use_container_width=True,
+        key="history_editor"
+    )
+    st.session_state.matches = df_history.to_dict("records")
+else:
+    st.info("Zatím nejsou uložené žádné zápasy.")
+
+from io import BytesIO
+
+if st.session_state.matches:
+    buffer = BytesIO()
+    export_df = pd.DataFrame(st.session_state.matches)
+    with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
+        export_df.to_excel(writer, index=False, sheet_name="Matches")
+
+    st.download_button(
+        label="⬇️ Stáhnout Excel",
+        data=buffer,
+        file_name="hockey_logic_history.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
