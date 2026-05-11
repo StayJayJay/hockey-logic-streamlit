@@ -8,19 +8,14 @@ st.set_page_config(
 # ======================
 # SIDEBAR NAVIGACE
 # ======================
-st.sidebar.title("🏒 Hockey Logic")
-st.sidebar.markdown("### Navigace")
 
-st.sidebar.markdown(
-    """
-- 📊 **Predikce zápasu**  
-- 📂 **Historie & Excel**
-"""
-)
+st.title("🏒 Hockey Logic")
 
-st.sidebar.info(
-    "Stránky přepínáš kliknutím na jejich název výše ⬆️"
-)
+if st.button("📊 Predikce zápasu"):
+    st.switch_page("pages/1_📊_Predikce_zapasu.py")
+
+if st.button("📂 Historie & Excel"):
+    st.switch_page("pages/2_📂_Historie_a_Excel.py")
 
 # ======================
 # HLAVNÍ STRÁNKA
