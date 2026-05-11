@@ -48,16 +48,16 @@ PLAYOFFS = {
 # ===============================
 # SIDEBAR NAVIGATION
 # ===============================
-st.sidebar.title("🏒 Hockey Logic")
+st.sidebar.title("🏒 Hockey Dat.Cen")
 
-if st.sidebar.button("📊 Predikce zápasu"):
+if st.sidebar.button("Predikce zápasu"):
     st.session_state.page = "predikce"
 
-if st.sidebar.button("📂 Historie & Excel"):
+if st.sidebar.button("Historie & Excel"):
     st.session_state.page = "historie"
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("Jednosouborová verze ✅")
+
 
 
 # ===============================
@@ -81,12 +81,14 @@ if st.session_state.page == "predikce":
         col1, col2 = st.columns(2)
 
         with col1:
+            team_home = st.text_input("Team Home")
             shots_home = st.number_input("Střely Home", 0, step=1)
             pp_home = st.number_input("PP Home", 0, step=1)
             pp_goals_home = st.number_input("PP Góly Home", 0, step=1)
             goalie_home = st.number_input("Goalie Home", 0.0, 1.0, 0.50, step=0.01)
 
         with col2:
+            team_away = st.text_input("Team Away")
             shots_away = st.number_input("Střely Away", 0, step=1)
             pp_away = st.number_input("PP Away", 0, step=1)
             pp_goals_away = st.number_input("PP Góly Away", 0, step=1)
