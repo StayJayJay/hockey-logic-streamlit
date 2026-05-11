@@ -8,7 +8,7 @@ st.set_page_config(
 st.title("Hockey Log.Dat")
 
 if st.button("Predikce zápasu"):
-    st.switch_page("pages/Predikce_zapasu.py")
+    st.switch_page("pages/predikce.py")
 
 if st.button("Historie & Excel"):
-    st.switch_page("pages/Historie_a_Excel.py")
+    st.switch_page("pages/historie.py")
