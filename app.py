@@ -124,6 +124,8 @@ if st.session_state.page == "predikce":
         st.session_state.last_match = {
             "Date": datetime.now().strftime("%Y-%m-%d"),
             "Mode": mode,
+            "Team Home":team_home,
+            "Team Away":team_away,
             "Shots Home": shots_home,
             "Shots Away": shots_away,
             "PP Home": pp_home,
