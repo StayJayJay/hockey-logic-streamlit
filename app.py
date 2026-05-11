@@ -5,14 +5,10 @@ st.set_page_config(
     layout="centered"
 )
 
-# ======================
-# SIDEBAR NAVIGACE
-# ======================
-
 st.title("Hockey Log.Dat")
 
-if st.button("📊 Predikce zápasu"):
-    st.switch_page("pages/1_📊_Predikce_zapasu.py")
+if st.button("Predikce zápasu"):
+    st.switch_page("pages/Predikce_zapasu.py")
 
-if st.button("📂 Historie & Excel"):
-    st.switch_page("pages/2_📂_Historie_a_Excel.py")
+if st.button("Historie & Excel"):
+    st.switch_page("pages/Historie_a_Excel.py")
