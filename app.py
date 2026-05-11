@@ -172,4 +172,3 @@ elif st.session_state.page == "historie":
             file_name="hockey_logic_history.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
-``
