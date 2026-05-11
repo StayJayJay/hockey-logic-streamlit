@@ -61,25 +61,6 @@ if submit:
     st.metric("Pravděpodobnost výhry", f"{p_win*100:.1f} %")
     st.write(f"**Log-Odds:** {log_odds:.3f}")
 
-    if st.button("💾 Uložit zápas do historie"):
-    st.session_state.matches.append({
-        "Date": datetime.now().strftime("%Y-%m-%d"),
-        "Mode": mode,
-        "Home": home_team,
-        "Shots Home": shots_home,
-        "Shots Away": shots_away,
-        "PP Home": pp_home,
-        "PP Away": pp_away,
-        "PP Goals Home": pp_goals_home,
-        "PP Goals Away": pp_goals_away,
-        "Goalie Diff": goalie_diff,
-        "xG Diff": xg_diff,
-        "PP Diff": pp_diff,
-        "P(win)": round(p_win, 3),
-        "Result": ""   # vyplníš později
-    })
-    st.success("Zápas uložen ✅")
-
 st.divider()
 st.subheader("📂 Historie zápasů")
 
@@ -109,3 +90,23 @@ if st.session_state.matches:
         file_name="hockey_logic_history.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
+
+    
+    if st.button("💾 Uložit zápas do historie"):
+    st.session_state.matches.append({
+        "Date": datetime.now().strftime("%Y-%m-%d"),
+        "Mode": mode,
+        "Home": home_team,
+        "Shots Home": shots_home,
+        "Shots Away": shots_away,
+        "PP Home": pp_home,
+        "PP Away": pp_away,
+        "PP Goals Home": pp_goals_home,
+        "PP Goals Away": pp_goals_away,
+        "Goalie Diff": goalie_diff,
+        "xG Diff": xg_diff,
+        "PP Diff": pp_diff,
+        "P(win)": round(p_win, 3),
+        "Result": ""   # vyplníš později
+    })
+    st.success("Zápas uložen ✅")
